@@ -19,7 +19,7 @@
 #include <vector>
 #include <map>
 
-#include <sys/poll.h>
+#include <poll.h>
 
 #include "ndppd.h"
 

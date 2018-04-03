@@ -20,7 +20,7 @@
 #include <map>
 #include <list>
 
-#include <sys/poll.h>
+#include <poll.h>
 
 #include "ndppd.h"
 

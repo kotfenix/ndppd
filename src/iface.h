@@ -20,7 +20,7 @@
 #include <vector>
 #include <map>
 
-#include <sys/poll.h>
+#include <poll.h>
 #include <net/ethernet.h>
 
 #include "ndppd.h"
