@@ -84,13 +84,7 @@ std::string logger::err()
 {
     char buf[2048];
 
-#if (_POSIX_C_SOURCE >= 200112L || _XOPEN_SOURCE >= 600) && ! _GNU_SOURCE
-    if (strerror_r(errno, buf, sizeof(buf))
-        return "Unknown error";
-    return buf;
-#else
-    return strerror_r(errno, buf, sizeof(buf));
-#endif
+    return strerror_r_wrapper(strerror_r(errno, buf, sizeof(buf)), buf);
 }
 
 logger logger::error()
@@ -226,6 +220,18 @@ bool logger::verbosity(const std::string& name)
     }
 
     return false;
+}
+
+// XSI-compliant: int
+std::string logger::strerror_r_wrapper(int, char* s)
+{
+    return s;
+}
+
+// GNU-specific: char *
+std::string logger::strerror_r_wrapper(char* s, char*)
+{
+    return s;
 }
 
 NDPPD_NS_END

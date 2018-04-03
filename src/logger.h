@@ -91,6 +91,9 @@ private:
 
     static int _max_pri;
 
+    // helpers for strerror_r
+    static std::string strerror_r_wrapper(int, char* s);
+    static std::string strerror_r_wrapper(char* s, char*);
 
 };
 
